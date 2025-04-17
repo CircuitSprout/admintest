@@ -1,27 +1,30 @@
-body {
+html, body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    overflow: visible; /* Ensure content is not clipped */
+    overflow-x: hidden; 
     background-color: #f4f4f4;
+    height: 100%;
 }
 
 .dashboardContainer {
     display: grid;
-    grid-template-columns: 200px 1fr; /* Sidebar (200px) and Main Content (flexible) */
-    grid-template-rows: auto 1fr; /* First row for searchBar, second row for mainContent */
-    height: 100vh; /* Full viewport height */
-    gap: 10px; /* Add spacing between rows and columns */
+    grid-template-columns: 200px 1fr; 
+    grid-template-rows: auto 1fr;
+    min-height: 100vh; 
+    gap: 10px; 
+    align-items: start; 
 }
+
 .searchBar {
-    grid-column: 2; /* Place in the second column */
-    grid-row: 1; /* Place in the first row */
+    grid-column: 2;
+    grid-row: 1; 
     display: flex;
-    justify-content: space-between; /* Space between search input and greeting */
+    justify-content: space-between; 
     align-items: center;
     padding: 10px 20px;
     background-color: rgb(175, 218, 255);
     box-shadow: 0 4px 10px rgba(136, 137, 137, 0.2);
-    border-radius: 5px;
 }
 
 .searchInput {
@@ -57,84 +60,140 @@ body {
 }
 
 .mainContent {
-    grid-column: 2; /* Place in the second column */
-    grid-row: 2; /* Place in the second row */
-    padding: 20px; /* Add padding for spacing inside */
-    margin-top: 0; /* Remove unnecessary margin */
+    grid-column: 2; 
+    grid-row: 2; 
+    padding: 10px; 
+    margin-top: 0; 
 }
 
 .sideBar {
-    grid-column: 1; /* Place in the first column */
-    grid-row: 1 / -1; /* Span all rows */
+    grid-column: 1; 
+    grid-row: 1 / -1; 
     background-color: #2492ff;
     color: white;
     padding: 10px;
-    height: 100%; /* Full height */
-    font-style: bold;
+    height: 100%; 
+    font-weight: bold;
 }
 
 .dashboardTwo {
     display: grid;
     background-color: #f4f4f4;
-    gap: 10px;
+    gap: 3px; 
     grid-column: 2;
-    grid-row: 2; /* Two columns: wider for .projectCards, narrower for .sideCardOne */
-    grid-template-columns: 2fr 1fr;
+    grid-row: 2; 
+    grid-template-columns: 2fr 1fr; 
+    grid-template-rows: auto auto; 
     padding: 10px;
+    align-items: start; 
+    overflow: hidden;
+}
+
+.projectSection {
+    position: relative;
+}
+
+.projectSection h4 {
+    position: absolute; 
+    left: 20px; 
+    margin: 0;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    z-index: 1; 
 }
 
 .projectCards {
-    grid-column: 1;
+    grid-column: 1 / 3; 
+    grid-row: 1 / 3; 
     display: grid;
-    padding: 0 10px 0 10px;
-    grid-template-columns: repeat(2, 1fr); /* Responsive grid */
-    gap: 20px; /* Space between cards */
-    align-self: start;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-auto-rows: 1fr; 
+    gap: 20px; 
+    padding: 30px 10px 10px; 
+    align-self: start; 
+    justify-self: stretch; 
 }
-
-.sideCardOne, .sideCardTwo {
-    grid-column: 2; /* Place in the second column of .dashboardTwo */
+.sideCardOne {
+    grid-column: 3; 
+    grid-row: 1; 
     display: grid;
-    grid-template-rows: auto 1fr; /* First row for the h4, second row for the content */
-    gap: 0; /* Space between the h4 and the content */
-    padding: 0; /* Remove extra padding */
-    background-color: transparent; /* No background color */
-    border-radius: 0; /* No rounded corners */
-    box-shadow: none; /* No shadow */
-    align-self: start; /* Align to the top of the column */
+    grid-template-rows: auto 1fr; 
+    gap: 5px;
+    padding: 0 50px;
+    align-self: start; 
+    margin-top: 0;
+}
+.sideCardOne h4 {
+    margin: 0;
+    padding: 10px;
+    font-size: 0.8rem;
+    color: black;
+    text-align: left;
 }
 
 .listAnnouncements {
     display: grid;
-    gap: 10px; /* Remove gaps between child elements */
-    box-sizing: border-box; /* Include padding in the element's total width and height */
-    padding: 10px; /* Add padding inside the box */
-    background-color: rgb(255, 255, 255); /* White background for the big box */
-    border-radius: 10px; /* Rounded corners for the big box */
-    box-shadow: 0 4px 10px rgba(136, 137, 137); /* Add shadow for depth */
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 15px; 
+    background-color: rgb(255, 255, 255); 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(136, 137, 137); 
+    margin: 0;
 }
 
-.cool, .cooler, .super, .chill, .side, .sweet, .trendingList {
+.sideCardTwo {
+    grid-column: 3;
+    grid-row: 2; 
     display: grid;
-    justify-content: center;
-    align-items: center;
+    grid-template-rows: auto 1fr; 
+    gap: 5px; 
+    padding: 0 60px 20px; 
+    align-self: start; 
+    position: relative;
+    bottom: 110%;
+}
+
+.sideCardTwo h4 {
+    margin: 0;
+    padding: 10px;
+    font-size: 0.8rem;
+    color: black;
+    text-align: left;
+}
+
+.trendingList {
+    display: grid;
+    gap: 5px; 
+    box-sizing: border-box;
+    padding: 20px 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(136, 137, 137); 
+    margin: 0;
+    margin-top: -10px;
+}
+
+.cool, .cooler, .super, .chill, .side, .sweet {
+    display: grid;
+    align-items: start; 
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     box-shadow: 0 4px 10px rgba(136, 137, 137);
     border-radius: 10px;
-    padding: 10px;
-    font-size: 0.7rem;
-    height: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-wrap: break-word;
+    padding: 8px;
+    font-size: 0.7rem; 
+    height: 180px; 
+    width: 250px; 
+    text-overflow: clip; 
+    white-space: normal; 
+    line-height: 1.4;
 }
 
 .siteMain, .comms, .private {
     display: grid;
-    place-items: center; /* Centers content both horizontally and vertically */
-    background-color: transparent; /* Inherit the background from .listAnnouncements */
+    place-items: center; 
+    background-color: transparent; 
     border-bottom: 1px solid black;
     font-size: .5rem;
 }
@@ -146,9 +205,7 @@ body {
 h4, h5 {
     display: block;
     color: black;
-    font-size: .8rem;
-    margin: 5px 0;
-    padding: 10px 0;
+    font-size: 0.8rem;
 }
 
 h1 {
@@ -167,13 +224,4 @@ h1 {
     margin: 0;
     color: rgb(255, 255, 255);
     font-size: 1rem;
-
-}
-.trendingList {
-    display: grid;
-    gap: 10px;
-    box-sizing: border-box;
-    padding: 10px;
-    margin-top: 0;
-    background-color: rgb (255, 255, 255);
 }
